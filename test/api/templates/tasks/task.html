@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{{task.title}}</title>
+    </head>
+    <body>
+        {% extends "shared/header.html" %}
+        {% block content %}
+        <h2>Title: {{task.title}}</h1>
+        <h3>Date of creation: {{task.dateOfCreate}}</h2>
+        <h3>Date of last modification: {{task.dateOfMod}}</h3>
+        <h4>Task description: {{task.desc}}</h4>
+        {%if task.status %}
+            <h3>Task is done</h3>
+        {% else %}
+            <h3><u style="color: rgb(12, 97, 24);">Task is not done yet</u></h3>
+        {% endif %}
+        {% endblock %}
+    </body>
+</html>

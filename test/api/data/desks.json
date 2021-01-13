@@ -1,0 +1,24 @@
+{
+    "desks": [
+        {
+            "dateOfCreate": "20-04-2020",
+            "dateOfMod": "14-07-2020",
+            "name": "desk1"
+        },
+        {
+            "dateOfCreate": "15-03-2020",
+            "dateOfMod": "16-07-2020",
+            "name": "desk2"
+        },
+        {
+            "dateOfCreate": "01-01-2020",
+            "dateOfMod": "12-10-2020",
+            "name": "desk3"
+        },
+        {
+            "dateOfCreate": "12-01-2021",
+            "dateOfMod": "13-01-2021",
+            "name": "desk4"
+        }
+    ]
+}

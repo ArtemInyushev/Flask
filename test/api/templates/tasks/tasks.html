@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Tasks</title>
+  </head>
+  <body>
+      {% extends "shared/header.html" %}
+      {% block content %}
+      <form method="GET" action="{{url_for('tasks.getAllTasks')}}">
+            <span>Desk name: </span>
+            <select name="filter">
+                <option value="{{main_filter}}" selected>{{main_filter}}</option>
+                {% for filter in filters %}
+                    <option value="{{filter}}">{{filter}}</option>
+                {% endfor %}
+                <input type="submit" value="Filter">
+            </select>
+      </form>
+      <br>
+      <table border="1">
+        <caption>Desks</caption>
+        <tr>
+          <th>Title</th>
+          <th>View details</th>
+          <th>Delete action</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.title}}</td>
+                <td>
+                <form method="GET" action="/tasks/{{task.title}}">
+                    <button type="submit">{{task.title}} details</button>
+                </form>
+                </td>
+                <td>
+                <form method="POST" action="/tasks/delete">
+                    <input type="hidden" name="title" value="{{task.title}}">
+                    <button type="submit">{{task.title}} delete</button>
+                </form>
+                </td>
+            </tr>
+        {% endfor %}
+      </table>
+      <br><br>
+      <b>Update task:</b><br>
+      <form action="/tasks/update" method="POST">
+        <span>Old task title: </span>
+        <input type="text" name="old_title"><br>
+        <span>New task title: </span>
+        <input type="text" name="new_title"><br>
+        <span>Is task done?</span>
+        <input type="checkbox" name="status" value="done" checked><br>
+        <span>Description:</span><br>
+        <textarea name="desc" rows="15" cols="20"></textarea><br>
+        <input type="submit" value="Update">
+      </form>
+      {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{{desk.name}}</title>
+    </head>
+    <body>
+        {% extends "shared/header.html" %}
+        {% block content %}
+        <h1>Name: {{desk.name}}</h1>
+        <h2>Date of creation: {{desk.dateOfCreate}}</h2>
+        <h3>Date of last modification: {{desk.dateOfMod}}</h3>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Desks</title>
+  </head>
+  <body>
+      {% extends "shared/header.html" %}
+      {% block content %}
+      <table border="1">
+        <caption>Desks</caption>
+        <tr>
+          <th>Name</th>
+          <th>View details</th>
+          <th>Delete action</th>
+        </tr>
+        {% for desk in desks %}
+        <tr>
+          <td>{{desk.name}}</td>
+          <td>
+            <form method="GET" action="/desks/{{desk.name}}">
+              <button type="submit">{{desk.name}} details</button>
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="/desks/delete">
+              <input type="hidden" name="name" value="{{desk.name}}">
+              <button type="submit">{{desk.name}} delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br>
+      {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+          <h2>{{message}}</h2><br>
+        {% endfor %}
+      {% endwith %}
+      <form action="/desks/new" method="POST">
+        <span>New desk name: </span>
+        <input type="text" name="name">
+        <input type="submit" value="Create">
+      </form>
+      <br>
+      <form action="/desks/update" method="POST">
+        <span>Old desk name: </span>
+        <input type="text" name="old_name"><br>
+        <span>New desk name: </span>
+        <input type="text" name="new_name"><br>
+        <input type="submit" value="Update">
+      </form>
+      {% endblock %}
+  </body>
+</html>
